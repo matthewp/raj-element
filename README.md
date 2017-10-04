@@ -1,11 +1,9 @@
-<!doctype html>
-<html lang="en">
-<title>raj element playground</title>
+# raj-element
 
-<my-element></my-element>
+Create [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) from [Raj](https://github.com/andrejewski/raj) programs.
 
-<script type="module">
-import mapElement from '../el.js';
+```js
+import mapElement from './node_modules/raj-element/el.js';
 
 const program = {
   init: [{
@@ -13,15 +11,10 @@ const program = {
   }],
   update (message, state) {
     let count = state.count + 1;
-    switch(message.type) {
-      case 'COUNT':
-        count = message.value;
-        break;
-    }
-
     return [{count}]; // Increment the state
   },
-  view ({count}, dispatch, root) {
+  view ({count}, dispatch) {
+    // First render, probably use a vdom library instead.
     if(!root.firstChild) {
       root.innerHTML = `
         <h1>
@@ -38,9 +31,11 @@ const program = {
   }
 };
 
-const Element = mapElement(program, {
-  props: ['count']
-});
+const Element = mapElement(program);
 
 customElements.define('my-element', Element);
-</script>
+```
+
+## License
+
+BSD 2 Clause
