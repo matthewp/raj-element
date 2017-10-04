@@ -1,0 +1,20 @@
+{
+  "name": "raj-element",
+  "version": "1.0.0",
+  "description": "",
+  "main": "el.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "el.js",
+    "raj.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-commonjs-es2015-modules": "^3.0.2",
+    "raj": "^0.0.9"
+  }
+}

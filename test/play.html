@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<title>raj element playground</title>
+
+<my-element></my-element>
+
+<script type="module">
+  import mapElement from '../el.js';
+
+  const program = {
+    init: [{
+      count: 0 // An integer to count
+    }],
+    update (message, state) {
+      let count = state.count + 1;
+      switch(message.type) {
+        case 'COUNT':
+          count = message.value;
+          break;
+      }
+
+      return [{count}]; // Increment the state
+    },
+    view ({count}, dispatch, root) {
+      if(!root.firstChild) {
+        root.innerHTML = `
+          <h1>
+            Count:
+            <span id="count">0</span>
+          </h1>
+          <button type="button">Increment</button>
+        `;
+
+        root.querySelector('button').onclick = dispatch;
+      }
+
+      root.querySelector('#count').textContent = count;
+    }
+  };
+
+  const Element = mapElement(program, {
+    props: ['count']
+  });
+
+  customElements.define('my-element', Element);
+</script>
