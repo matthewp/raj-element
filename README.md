@@ -13,7 +13,7 @@ const program = {
     let count = state.count + 1;
     return [{count}]; // Increment the state
   },
-  view ({count}, dispatch) {
+  view ({count}, dispatch, root) {
     // First render, probably use a vdom library instead.
     if(!root.firstChild) {
       root.innerHTML = `
