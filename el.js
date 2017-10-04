@@ -1,4 +1,4 @@
-import raj from '../raj.js';
+import raj from './raj.js';
 const {program} = raj;
 
 const KILL = Symbol('raj.kill');
